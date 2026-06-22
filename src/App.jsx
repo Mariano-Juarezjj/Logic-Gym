@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router"
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from "./components/shared/Menu"
 import Footer from "./components/shared/Footer"
 import Home from "./components/views/home/Home.jsx"
