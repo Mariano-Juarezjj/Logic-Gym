@@ -1,4 +1,4 @@
-import { Navbar, Container, Nav, Button } from "react-bootstrap";
+import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router";
 import "./Navbar.css";
 
@@ -18,33 +18,67 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
         </Navbar.Brand>
 
         <Navbar.Toggle aria-controls="navbar-nav"/>
+
+        <Navbar.Collapse className="navbar-nav">
+          <Form className="d-flex mx-auto my-3 my-lg-0 search-form">
+            <Form.Control
+            type="search"
+            placeholder="Buscar"
+            className="me-2 buscar-input"
+            aria-label="Search"
+            />
+            <Button className="buscar-btn">Buscar</Button>
+
+          </Form>
+
         <Nav className="ms-auto gap-4">
 
-          <Nav.Link href="/" className="active-link">
+          {usuarioLogueado && usuarioLogueado.role === "admin" && (
+              
+                <NavLink to={"/administrador"} className="custom-link">
+                  Administrador
+                </NavLink>
+                
+            )}
+
+          <Nav.Link to={"/"} className="custom-link">
           Inicio
           </Nav.Link>
 
-          <Nav.Link href="/planes" className="custom-link">
+          <Nav.Link to={"/planes"} className="custom-link">
           Planes
           </Nav.Link>
 
 
-          <Nav.Link href="/contacto" className="custom-link">
+          <Nav.Link to={"/contacto"} className="custom-link">
           Contacto
           </Nav.Link>
 
-          <Nav.Link href="/nosotros" className="custom-link">
+          <Nav.Link to={"/nosotros"} className="custom-link">
           Nosotros
           </Nav.Link>
 
-          <Nav.Link href="/login" className="custom-link">
+          {!usuarioLogueado && (
+            <>
+          <Nav.Link to={"/login"} className="custom-link">
           Login
           </Nav.Link>
 
-          <Nav.Link href="/Registrate" className="custom-link">
+          <Nav.Link to={"/Registrate"} className="custom-link">
           Registrate
           </Nav.Link>
+          </>
+          )}
+
+          {usuarioLogueado && (
+              <Button variant="dark" onClick={logout}>
+                  Logout
+                </Button>
+              
+            )}
+
         </Nav>
+        </Navbar.Collapse>
 
       </Container>
     </Navbar>
