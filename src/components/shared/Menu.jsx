@@ -1,6 +1,7 @@
 import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router";
 import "./Navbar.css";
+import Login from "../views/Login";
 
 
 const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
@@ -21,40 +22,40 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
 
         <Navbar.Collapse className="navbar-nav">
 
-        <Nav className="ms-auto gap-4">
+        <Nav className="mx-auto gap-5">
 
           {usuarioLogueado && usuarioLogueado.role === "admin" && (
               
-                <NavLink as={Link} to={"/administrador"} className="custom-link">
+                <NavLink as={NavLink} to={"/administrador"} className="custom-link">
                   Administrador
                 </NavLink>
                 
             )}
 
-          <Nav.Link as={Link} to={"/"} className="custom-link">
+          <Nav.Link as={NavLink} to={"/"} className="custom-link">
           Inicio
           </Nav.Link>
 
-          <Nav.Link as={Link} to={"/planes"} className="custom-link">
+          <Nav.Link as={NavLink} to={"/planes"} className="custom-link">
           Planes
           </Nav.Link>
 
 
-          <Nav.Link as={Link} to={"/contacto"} className="custom-link">
+          <Nav.Link as={NavLink} to={"/contacto"} className="custom-link">
           Contacto
           </Nav.Link>
 
-          <Nav.Link as={Link} to={"/nosotros"} className="custom-link">
+          <Nav.Link as={NavLink} to={"/nosotros"} className="custom-link">
           Nosotros
           </Nav.Link>
 
           {!usuarioLogueado && (
             <>
-          <Nav.Link as={Link} to={"/login"} className="custom-link">
+          <Nav.Link as={NavLink} to={"/login"} className="custom-link">
           Login
           </Nav.Link>
 
-          <Nav.Link as={Link} to={"/Registrate"} className="custom-link">
+          <Nav.Link as={NavLink} to={"/Registrate"} className="custom-link">
           Registrate
           </Nav.Link>
           </>

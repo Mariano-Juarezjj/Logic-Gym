@@ -10,6 +10,7 @@ import FormularioProducto from "./components/views/Producto/FormularioProducto"
 import Error404 from "./components/views/Error404"
 import { useEffect, useState } from "react"
 import ProtectorAdmin from "./components/routes/ProtectorAdmin"
+import Registro from "./components/views/Registro.jsx"
 
 const App = () => {
 
@@ -32,6 +33,7 @@ return (
       <Route path="/" element={<Home/>}/>
       <Route path="/detalle" element={<DetalleDeProducto/>}/>
       <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
+      <Route path="/registro" element={<Registro/>}/>
       <Route path="/administrador" element={
         <ProtectorAdmin usuarioLogueado={usuarioLogueado}></ProtectorAdmin>}>
       <Route index element={<Administrador productos={productos} setProductos={setProductos}></Administrador>}/>
