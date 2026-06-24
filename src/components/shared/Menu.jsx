@@ -20,51 +20,41 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
         <Navbar.Toggle aria-controls="navbar-nav"/>
 
         <Navbar.Collapse className="navbar-nav">
-          <Form className="d-flex mx-auto my-3 my-lg-0 search-form">
-            <Form.Control
-            type="search"
-            placeholder="Buscar"
-            className="me-2 buscar-input"
-            aria-label="Search"
-            />
-            <Button className="buscar-btn">Buscar</Button>
-
-          </Form>
 
         <Nav className="ms-auto gap-4">
 
           {usuarioLogueado && usuarioLogueado.role === "admin" && (
               
-                <NavLink to={"/administrador"} className="custom-link">
+                <NavLink as={Link} to={"/administrador"} className="custom-link">
                   Administrador
                 </NavLink>
                 
             )}
 
-          <Nav.Link to={"/"} className="custom-link">
+          <Nav.Link as={Link} to={"/"} className="custom-link">
           Inicio
           </Nav.Link>
 
-          <Nav.Link to={"/planes"} className="custom-link">
+          <Nav.Link as={Link} to={"/planes"} className="custom-link">
           Planes
           </Nav.Link>
 
 
-          <Nav.Link to={"/contacto"} className="custom-link">
+          <Nav.Link as={Link} to={"/contacto"} className="custom-link">
           Contacto
           </Nav.Link>
 
-          <Nav.Link to={"/nosotros"} className="custom-link">
+          <Nav.Link as={Link} to={"/nosotros"} className="custom-link">
           Nosotros
           </Nav.Link>
 
           {!usuarioLogueado && (
             <>
-          <Nav.Link to={"/login"} className="custom-link">
+          <Nav.Link as={Link} to={"/login"} className="custom-link">
           Login
           </Nav.Link>
 
-          <Nav.Link to={"/Registrate"} className="custom-link">
+          <Nav.Link as={Link} to={"/Registrate"} className="custom-link">
           Registrate
           </Nav.Link>
           </>
