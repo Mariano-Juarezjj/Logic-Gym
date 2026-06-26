@@ -32,7 +32,7 @@
     letter-spacing: 0.5px;
 }
 
-.contacto-input {
+.contacto-caja .contacto-input {
     background-color: #1a1a1a;
     border: 1px solid #333333;
     color: #ffffff;
@@ -40,19 +40,19 @@
     transition: all 0.3s ease; */
 }
 
-.contacto-input::placeholder {
+.contacto-caja .contacto-input::placeholder {
     color: #888888;
 }
 
-.contacto-input:focus {
+.contacto-caja .contacto-input:focus {
     background-color: #222222;
     color: #ffffff;
     border-color: #0466c8;
     box-shadow: 0 0 0 0.25rem #0466c8;
 }
 
-.contacto-btn {
-    /* background-color: transparent; */
+.contacto-caja .contacto-btn {
+    background-color: transparent;
     color: #0466c8;
     border: 2px solid #0466c8;
     padding: 0.8rem;
@@ -62,9 +62,13 @@
     transition: all 0.3s ease-in-out;
 }
 
-.contacto-btn:hover {
+.contacto-caja .contacto-btn:hover {
     background-color: #0466c8;
     border-color: #0466c8;
     color: #111111;
     box-shadow: 0 0 15 #0466c8;
+}
+
+.mapa-titulo {
+    color: #0466c8;
 }
