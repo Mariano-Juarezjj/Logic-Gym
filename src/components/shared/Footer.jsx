@@ -10,17 +10,19 @@ const Footer = () => {
       <div className="container-fluid">
         <div className="row gy-4 align-items-start">
           <div className="col-lg-3 col-md-6">
-            <img
-              src={logoLogicGym}
-              alt="Logo Logic Gym"
-              className="footerLogo"
-            />
-            <p className="descripcionFooter mt-3">
+            <div className="d-flex justify-content-center">
+              <img
+                src={logoLogicGym}
+                alt="Logo Logic Gym"
+                className="footerLogo"
+              />
+            </div>
+            <p className="descripcionFooter mt-3 text-center">
               Donde el entrenamiento fisico y la programacion se unen para
               desarrollar la mejor version de vos mismo
             </p>
 
-            <div className="redesSociales">
+            <div className="redesSociales d-flex justify-content-center">
               <a
                 href="https://web.whatsapp.com/"
                 className="wsp"
