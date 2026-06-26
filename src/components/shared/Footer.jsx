@@ -7,8 +7,8 @@ import "../../App.css";
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="container">
-        <div className="row gy-4">
+      <div className="container-fluid">
+        <div className="row gy-4 align-items-start">
           <div className="col-lg-3 col-md-6">
             <img
               src={logoLogicGym}
@@ -19,36 +19,77 @@ const Footer = () => {
               Donde el entrenamiento fisico y la programacion se unen para
               desarrollar la mejor version de vos mismo
             </p>
-            <a>
-              <p>3816042407</p>
-            </a>
 
             <div className="redesSociales">
-              <a href="" className="wsp">
+              <a
+                href="https://web.whatsapp.com/"
+                className="wsp"
+                target="_blank"
+              >
                 <FaWhatsapp />
               </a>
-              <a href="" className="instagram">
+              <a
+                href="https://www.instagram.com/?hl=es"
+                className="instagram"
+                target="_blank"
+              >
                 <FaInstagram />
               </a>
-              <a href="" className="facebook">
+              <a
+                href="https://www.facebook.com/?locale=es_LA"
+                className="facebook"
+                target="_blank"
+              >
                 <FaFacebook />
               </a>
-              <a href="" className="x">
+              <a href="https://x.com/?lang=es" className="x" target="_blank">
                 <FaXTwitter />
               </a>
             </div>
           </div>
 
-          <div className="col-lg-3 col-md-6">
+          <div className="col-lg-2 col-md-6 text-start">
+            <h4 className="titulo">Contactos</h4>
+            <a
+              href="https://wa.me/543815743795"
+              target="_blank"
+              className="contacto"
+            >
+              Milagros: 1234567891
+            </a>
+            <a
+              href="https://wa.me/543813156301"
+              target="_blank"
+              className="contacto"
+            >
+              Matias: 1234567891
+            </a>
+            <a
+              href="https://wa.me/543875269167"
+              target="_blank"
+              className="contacto"
+            >
+              Mariano: 1234567891
+            </a>
+            <a
+              href="https://wa.me/543816042407"
+              target="_blank"
+              className="contacto"
+            >
+              Diego: 1234567891
+            </a>
+          </div>
+
+          <div className="col-lg-2 col-md-6">
             <h4 className="titulo">Nuestra Historia</h4>
-            <p className="descripcionFooter">
+            <p className="descripcionFooter text-center">
               Logic Gym nace con la idea de combinar disciplina física y mental.
               Creemos que el cuerpo y la lógica se entrenan todos los días,
               dentro y fuera del gimnasio.
             </p>
           </div>
 
-          <div className="col-lg-2 col-md-6">
+          <div className="col-lg-2  col-md-6 text-center">
             <h4 className="titulo">Explorar</h4>
             <div className="linksNavegacion">
               <a href="">Planes</a>
@@ -58,7 +99,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-lg-4 col-md-6">
+          <div className="col-lg-3 col-md-6">
             <h4 className="titulo">Ubicación</h4>
             <iframe
               src={
