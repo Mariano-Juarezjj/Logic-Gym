@@ -36,8 +36,6 @@
     background-color: #1a1a1a;
     border: 1px solid #333333;
     color: #ffffff;
-    /* padding: 0.8rem 1rem;
-    transition: all 0.3s ease; */
 }
 
 .contacto-caja .contacto-input::placeholder {
@@ -69,9 +67,8 @@
     box-shadow: 0 0 15 #0466c8;
 }
 
-.mapa-titulo {
-    color: #0466c8;
-}.footer {
+
+.footer {
   background-color: #111;
   color: #fff;
   padding: 48px 0;
