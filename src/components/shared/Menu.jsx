@@ -2,6 +2,7 @@ import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router";
 import "./Navbar.css";
 import Login from "../views/Login";
+import Contacto from "../views/Contacto";
 
 
 const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {

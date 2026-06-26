@@ -1,6 +1,7 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
+import "../../App.css";
 
 const Contacto = () => {
   return (
