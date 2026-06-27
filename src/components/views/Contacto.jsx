@@ -30,7 +30,7 @@ const Contacto = () => {
         <Col xs={12} md={8} lg={6}>
           
           <div className="text-center mb-5">
-            <h1 className="contacto-titulo">Hablemos</h1>
+            <h1 className="contacto-titulo">Contactanos</h1>
             <p className="contacto-subtitulo">¿Tenés alguna duda sobre nuestros planes? Escribinos.</p>
           </div>
 
