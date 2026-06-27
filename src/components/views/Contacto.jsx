@@ -14,7 +14,15 @@ const Contacto = () => {
 
     const onSubmit = (data) => {
         console.log("Datos del formulario validados", data);
-    }
+    };
+
+    Swal.fire({
+      title: "Mensaje enviado",
+      icon: "success",
+      confirmButtonColor: "#0466c8",
+      background: "#1a1a1a",
+      color: "#ffffff"
+    });
 
   return (
     <Container className="contacto-wrapper py-5">
