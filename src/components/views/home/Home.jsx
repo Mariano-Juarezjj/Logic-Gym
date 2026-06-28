@@ -188,3 +188,29 @@ const Home = () => {
             <WidgetClima />
           </Col>
       </Row>
+
+      <div className="text-center mb-5 pt-3">
+        <h2 className="fw-bold display-5 mt-2 mb-3">NUESTROS SERVICIOS</h2>
+        <div className="decorbar-blue mb-0"></div>
+      </div>
+
+      <div className="servicios-carousel mb-5">
+        <div className="servicios-track">
+          {[...servicios, ...servicios].map((servicio, index) => (
+            <div key={`servicio-${index}`} className="servicio-card card-dark">
+              <img
+                className="servicio-card-image"
+                src={mapaImagenesServicios[servicio.imagen]}
+                alt={servicio.titulo}
+                loading="lazy"
+              />
+                <div className="servicio-card-body">
+                  <h5 className="fw-bold servicio-card-title">{servicio.titulo}</h5>
+                  <p className="servicio-card-text">{servicio.descripcion}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+              <hr className="section-divider my-5" />
