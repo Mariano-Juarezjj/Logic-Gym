@@ -212,5 +212,164 @@ const Home = () => {
             ))}
           </div>
         </div>
+
+  <hr className="section-divider my-5" />
+              
+    <div className="text-center mb-5">
+      <h2 className="fw-bold display-5 mt-2 mb-3">NUESTROS PRODUCTOS</h2>
+      <div className="decorbar-blue mb-0"></div>
+    </div>
+
+<Row className="g-4 mb-5">
+  {productosVisibles.map((producto, i) => (
+    <Col key={i} sm={6} md={4}>
+      <div className="card-dark h-100 d-flex flex-column producto-card">
         
-              <hr className="section-divider my-5" />
+        {/* Contenedor de la Imagen */}
+        <div className="producto-img-container">
+          <img
+            src={producto.imagen}
+            alt={producto.nombre}
+            width={320}
+            height={180}
+            className="producto-img"
+          />
+
+          {/* El badge mantiene el style en línea SOLO para inyectar su color dinámico */}
+          {producto.badge && (
+            <span className="producto-badge" style={{ background: producto.badgeColor }}>
+              {producto.badge}
+            </span>
+          )}
+        </div>
+
+        {/* Contenido / Cuerpo de la tarjeta */}
+        <div className="producto-body">
+          <span className="text-uppercase fw-bold mb-1 producto-categoria">
+            {producto.categoria}
+          </span>
+          <h5 className="fw-bold text-white mb-2 producto-titulo">
+            {producto.nombre}
+          </h5>
+          <p className="mb-3 flex-grow-1 producto-descripcion">
+            {producto.descripcion}
+          </p>
+          
+          <div className="d-flex justify-content-between align-items-center mt-auto mb-3">
+            <span className="fw-bold producto-precio">
+              ${producto.precio}
+            </span>
+            <span className="small fw-bold text-uppercase producto-tag-local">
+              En local
+            </span>
+          </div>
+
+          <Button
+            type="button"
+            className="w-100 fw-bold py-2 btn-blue"
+            style={{ fontSize: '0.85rem' }}
+            onClick={() => agregarAlCarrito({
+              nombre: producto.nombre,
+              categoria: producto.categoria,
+              precio: producto.precio,
+            })}
+            aria-label={`Agregar ${producto.nombre} al carrito`}
+          >
+             AGREGAR AL CARRITO
+          </Button>
+        </div>
+
+      </div>
+    </Col>
+  ))}
+</Row>
+  <div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mb-5">
+    <div className="text-muted small">
+      Mostrando {productosVisibles.length} de {productos.length} productos
+    </div>
+    <div className="d-flex gap-2">
+      <button
+        type="button"
+        className="btn btn-outline-secondary btn-sm"
+        disabled={paginaProductos === 1}
+        onClick={() => setPaginaProductos((page) => Math.max(page - 1, 1))}
+        aria-label="Página anterior de productos"
+      >
+        Anterior
+      </button>
+      <button
+        type="button"
+        className="btn btn-outline-secondary btn-sm"
+        disabled={paginaProductos === totalPaginasProductos}
+        onClick={() => setPaginaProductos((page) => Math.min(page + 1, totalPaginasProductos))}
+        aria-label="Página siguiente de productos"
+      >
+        Siguiente
+      </button>
+    </div>
+  </div>
+  <hr className="section-divider my-5" />
+  <div id="planes" className="text-center mb-5">
+          <h2 className="fw-bold display-5 mt-2 mb-3">EMPEZÁ HOY TU CAMBIO</h2>
+          <div className="decorbar-blue"></div>
+        </div>
+
+        <Row className="g-4 mb-5">
+          {cargandoPlanes ? (
+            <div className="text-center w-100 py-4">
+              <span className="text-muted">Cargando planes del gimnasio...</span>
+            </div>
+          ) : (
+            planes.map((plan, index) => (
+              <Col key={plan._id || index} md={4}>
+                <Card className="h-100 border-0 p-3 card-dark d-flex flex-column justify-content-between">
+                  <Card.Body className="d-flex flex-column justify-content-between">
+                    <div>
+                      <Card.Title className="fw-bold fs-4 mb-2 card-plan-title text-uppercase">{plan.titulo}</Card.Title>
+                      <h4 className="text-blue fw-bold mb-3">${plan.precio.toLocaleString('es-AR')}/mes</h4>
+                      <Card.Text className="text-muted card-plan-text">{plan.descripcion}</Card.Text>
+                    </div>
+                    <Button 
+                      className="w-100 mt-4 fw-bold py-2 btn-blue"
+                      onClick={() => handleConsultarPlan(plan.titulo)}
+                    >
+                      CONSULTAR PLAN
+                    </Button>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))
+          )}
+        </Row>
+        
+        <div className="text-center mb-5 pt-4">
+          <h2 className="fw-bold display-5">NUESTROS ENTRENADORES</h2>
+          <p className="text-muted">Expertos listos para maximizar tu rendimiento y acompañar tu proceso.</p>
+        </div>
+
+        <Row className="g-4 mb-5 justify-content-center">
+          {[
+            { nombre: 'Diego', esp: 'Especialista en Musculación y Fuerza', img: publicidad1 },
+            { nombre: 'Matias', esp: 'Coordinador de Box y Funcional', img: publicidad2 },
+            { nombre: 'Milagros', esp: 'Instructora de Ritmos y Cardio', img: publicidad3 },
+            { nombre: 'Mariano', esp: 'Entrenador Funcional', img: publicidad4 }
+          ].map((prof, index) => (
+            <Col key={index} sm={6} md={4}>
+              <Card className="text-center border-0 bg-transparent">
+                <div className="prof-img-wrapper">
+                  <Card.Img 
+                    variant="top" 
+                    src={prof.img} 
+                    className="prof-img"
+                    loading="lazy"
+                    alt={prof.nombre}
+                  />
+                </div>
+                <Card.Body className="px-0 pt-3">
+                  <Card.Title className="fs-5 fw-bold mb-1 trainer-name">{prof.nombre}</Card.Title>
+                  <Card.Text className="text-muted small text-uppercase tracking-wider">{prof.esp}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
