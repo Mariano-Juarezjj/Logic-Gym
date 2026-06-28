@@ -181,4 +181,10 @@ const Home = () => {
         <video className="hero-video" autoPlay muted loop playsInline src={heroVideo} poster={publicidad0} preload="metadata" />
         <div className="hero-video-overlay" />
       </section>
-    
+
+    <Container className="py-4"></Container>
+      <Row className="mb-5 justify-content-center">
+          <Col lg={5} md={8}>
+            <WidgetClima />
+          </Col>
+      </Row>
