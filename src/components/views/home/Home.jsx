@@ -2,13 +2,11 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col, Card, Button, Carousel } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
+import { ContextoCarrito } from '../componente/ContextoCarrito';
+
 import WidgetClima from '../components/WidgetClima';
-
 import BannerInfinito from '../components/BannerInfinito';
-
-import '../App.css';
-
-import publicidad from '../components/punlicidad';
+import './App.css';
 import publicidad0 from '../assets/publicidad0.png';
 import publicidad1 from '../assets/publicidad1.jpg';
 import publicidad2 from '../assets/publicidad2.webp';
@@ -116,7 +114,7 @@ const productosIniciales = [
     precio: 12000,
     imagen: imgRemera,
     descripcion: 'Remera técnica con tecnología de secado rápido y tejido transpirable. Disponible en talle S, M, L y XL. Colores: negro y gris.',
-    badge: 'ORIGINAL',
+    badge: 'OFICIAL',
     badgeColor: '#ff6f00'
   },
   {
@@ -134,9 +132,9 @@ const Home = () => {
   const [planes, setPlanes] = useState([]);
   const [cargandoPlanes, setCargandoPlanes] = useState(true);
   const [productos, setProductos] = useState(productosIniciales);
-  const [productPage, setProductPage] = useState(1);
+  const [paginaProductos, setPaginaProductos] = useState(1);
   const navigate = useNavigate();
-
+  
   const { agregarAlCarrito } = useContext(ContextoCarrito);
 
   useEffect(() => {
@@ -169,41 +167,44 @@ const Home = () => {
 
     fetchPlanes();
     fetchProductos();
-  }, []);  
+  }, []);
 
   const tamanioPagina = 3;
   const totalPaginasProductos = Math.ceil(productos.length / tamanioPagina);
-  const productosVisibles = productos.slice((paginaProductos - 1) * tamanioPagina, paginaProductos * tamanioPagina);
+  const productosVisibles = productos.slice((paginaProductos - 1) * tamanioPagina, paginaProductos * tamanioPagina); 
 
   return (
     <div className="home-bg text-white min-vh-100">
+      
       <section className="hero-section" aria-labelledby="hero-heading">
         <video className="hero-video" autoPlay muted loop playsInline src={heroVideo} poster={publicidad0} preload="metadata" />
-        <div className="hero-video-overlay" />
       </section>
 
-    <Container className="py-4"></Container>
-      <Row className="mb-5 justify-content-center">
+
+
+      <Container className="py-4">
+        <Row className="mb-5 justify-content-center">
           <Col lg={5} md={8}>
             <WidgetClima />
           </Col>
-      </Row>
+        </Row>
 
-      <div className="text-center mb-5 pt-3">
-        <h2 className="fw-bold display-5 mt-2 mb-3">NUESTROS SERVICIOS</h2>
-        <div className="decorbar-blue mb-0"></div>
-      </div>
+        <div className="text-center mb-5 pt-3">
+          <span className="text-muted text-uppercase small tracking-widest fw-bold">Lo que ofrecemos</span>
+          <h2 className="fw-bold display-5 mt-2 mb-3">NUESTROS SERVICIOS</h2>
+          <div className="decorbar-blue mb-0"></div>
+        </div>
 
-      <div className="servicios-carousel mb-5">
-        <div className="servicios-track">
-          {[...servicios, ...servicios].map((servicio, index) => (
-            <div key={`servicio-${index}`} className="servicio-card card-dark">
-              <img
-                className="servicio-card-image"
-                src={mapaImagenesServicios[servicio.imagen]}
-                alt={servicio.titulo}
-                loading="lazy"
-              />
+        <div className="servicios-carousel mb-5">
+          <div className="servicios-track">
+            {[...servicios, ...servicios].map((servicio, index) => (
+              <div key={`servicio-${index}`} className="servicio-card card-dark">
+                <img
+                  className="servicio-card-image"
+                  src={mapaImagenesServicios[servicio.imagen]}
+                  alt={servicio.titulo}
+                  loading="lazy"
+                />
                 <div className="servicio-card-body">
                   <h5 className="fw-bold servicio-card-title">{servicio.titulo}</h5>
                   <p className="servicio-card-text">{servicio.descripcion}</p>
@@ -213,19 +214,17 @@ const Home = () => {
           </div>
         </div>
 
-  <hr className="section-divider my-5" />
-              
-    <div className="text-center mb-5">
-      <h2 className="fw-bold display-5 mt-2 mb-3">NUESTROS PRODUCTOS</h2>
-      <div className="decorbar-blue mb-0"></div>
-    </div>
+        <hr className="section-divider my-5" />
+
+<div className="text-center mb-5">
+  <h2 className="fw-bold display-5 mt-2 mb-3">NUESTROS PRODUCTOS</h2>
+  <div className="decorbar-blue mb-0"></div>
+</div>
 
 <Row className="g-4 mb-5">
   {productosVisibles.map((producto, i) => (
     <Col key={i} sm={6} md={4}>
       <div className="card-dark h-100 d-flex flex-column producto-card">
-        
-        {/* Contenedor de la Imagen */}
         <div className="producto-img-container">
           <img
             src={producto.imagen}
@@ -234,16 +233,12 @@ const Home = () => {
             height={180}
             className="producto-img"
           />
-
-          {/* El badge mantiene el style en línea SOLO para inyectar su color dinámico */}
           {producto.badge && (
             <span className="producto-badge" style={{ background: producto.badgeColor }}>
               {producto.badge}
             </span>
           )}
         </div>
-
-        {/* Contenido / Cuerpo de la tarjeta */}
         <div className="producto-body">
           <span className="text-uppercase fw-bold mb-1 producto-categoria">
             {producto.categoria}
@@ -283,33 +278,36 @@ const Home = () => {
     </Col>
   ))}
 </Row>
-  <div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mb-5">
-    <div className="text-muted small">
-      Mostrando {productosVisibles.length} de {productos.length} productos
-    </div>
-    <div className="d-flex gap-2">
-      <button
-        type="button"
-        className="btn btn-outline-secondary btn-sm"
-        disabled={paginaProductos === 1}
-        onClick={() => setPaginaProductos((page) => Math.max(page - 1, 1))}
-        aria-label="Página anterior de productos"
-      >
-        Anterior
-      </button>
-      <button
-        type="button"
-        className="btn btn-outline-secondary btn-sm"
-        disabled={paginaProductos === totalPaginasProductos}
-        onClick={() => setPaginaProductos((page) => Math.min(page + 1, totalPaginasProductos))}
-        aria-label="Página siguiente de productos"
-      >
-        Siguiente
-      </button>
-    </div>
+
+<div className="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 mb-5">
+  <div className="text-muted small">
+    Mostrando {productosVisibles.length} de {productos.length} productos
   </div>
-  <hr className="section-divider my-5" />
-  <div id="planes" className="text-center mb-5">
+  <div className="d-flex gap-2">
+    <button
+      type="button"
+      className="btn btn-outline-secondary btn-sm"
+      disabled={paginaProductos === 1}
+      onClick={() => setPaginaProductos((page) => Math.max(page - 1, 1))}
+      aria-label="Página anterior de productos"
+    >
+      Anterior
+    </button>
+    <button
+      type="button"
+      className="btn btn-outline-secondary btn-sm"
+      disabled={paginaProductos === totalPaginasProductos}
+      onClick={() => setPaginaProductos((page) => Math.min(page + 1, totalPaginasProductos))}
+      aria-label="Página siguiente de productos"
+    >
+      Siguiente
+    </button>
+  </div>
+</div>
+
+<hr className="section-divider my-5" />
+        <hr className="section-divider my-5" />
+        <div id="planes" className="text-center mb-5">
           <h2 className="fw-bold display-5 mt-2 mb-3">EMPEZÁ HOY TU CAMBIO</h2>
           <div className="decorbar-blue"></div>
         </div>
@@ -341,20 +339,20 @@ const Home = () => {
             ))
           )}
         </Row>
-        
+
         <div className="text-center mb-5 pt-4">
           <h2 className="fw-bold display-5">NUESTROS ENTRENADORES</h2>
           <p className="text-muted">Expertos listos para maximizar tu rendimiento y acompañar tu proceso.</p>
         </div>
 
-        <Row className="g-4 mb-5 justify-content-center">
+        <Row className="g-4 mb-5 justify-content-center trainers-row">
           {[
             { nombre: 'Diego', esp: 'Especialista en Musculación y Fuerza', img: publicidad1 },
             { nombre: 'Matias', esp: 'Coordinador de Box y Funcional', img: publicidad2 },
             { nombre: 'Milagros', esp: 'Instructora de Ritmos y Cardio', img: publicidad3 },
             { nombre: 'Mariano', esp: 'Entrenador Funcional', img: publicidad4 }
           ].map((prof, index) => (
-            <Col key={index} sm={6} md={4}>
+            <Col key={index} sm={6} md={3}>
               <Card className="text-center border-0 bg-transparent">
                 <div className="prof-img-wrapper">
                   <Card.Img 
@@ -373,3 +371,49 @@ const Home = () => {
             </Col>
           ))}
         </Row>
+
+        <section className="comentarios">
+          <div className="container">
+            <div className="text-center mb-5">
+              <h2 className="fw-bold display-5 mt-2 mb-3">OPIONIONES <span className="text-blue">REALES</span></h2>
+            </div>
+            <div className="cuadricula-3">
+              <div className="tarjeta-testimonio">
+                <p>"Excelente ambiente y la calidad del equipamiento de fuerza es insuperable. El staff realmente sabe lo que hace y te corrigen la técnica al detalle."</p>
+                <div className="informacion-usuario">
+                  <div className="imagen-usuario">srcum</div>
+                  <div className="detalles-usuario">
+                    <h4>Scrum cambiar nombre</h4>
+                  </div>
+                </div>
+              </div>
+              <div className="tarjeta-testimonio">
+                <p>"El sector de suplementación integrado me facilita la vida. Los planes personalizados me ayudaron a quebrar mis récords personales en sentadilla en pocos meses."</p>
+                <div className="informacion-usuario">
+                  <div className="imagen-usuario">DC</div>
+                  <div className="detalles-usuario">
+                    <h4>Daniela Cardozo</h4>   
+                  </div>
+                </div>
+              </div>
+              <div className="tarjeta-testimonio">
+                <p>"Limpio, ordenado y con la música ideal para entrenar pesado. Los profesores de funcional son de primer nivel. Un gimnasio con identidad de verdad."</p>
+                <div className="informacion-usuario">
+                  <div className="imagen-usuario">PM</div>
+                  <div className="detalles-usuario">
+                    <h4>Pablo Marino</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <BannerInfinito className="my-4" />
+
+      </Container>
+    </div>
+  );
+};
+
+export default Home;
