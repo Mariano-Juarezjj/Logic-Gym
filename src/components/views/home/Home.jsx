@@ -174,3 +174,11 @@ const Home = () => {
   const tamanioPagina = 3;
   const totalPaginasProductos = Math.ceil(productos.length / tamanioPagina);
   const productosVisibles = productos.slice((paginaProductos - 1) * tamanioPagina, paginaProductos * tamanioPagina);
+
+  return (
+    <div className="home-bg text-white min-vh-100">
+      <section className="hero-section" aria-labelledby="hero-heading">
+        <video className="hero-video" autoPlay muted loop playsInline src={heroVideo} poster={publicidad0} preload="metadata" />
+        <div className="hero-video-overlay" />
+      </section>
+    
