@@ -22,3 +22,13 @@ const WeatherWidget = ({ latitude = -26.8241, longitude = -65.2226, locationLabe
 
     fetchClima();
   }, [latitude, longitude]);
+  
+  const getClimaDescripcion = (code) => {
+    if (code === 0) return 'Cielo despejado';
+    if (code >= 1 && code <= 3) return 'Parcialmente nublado';
+    if (code >= 45 && code <= 48) return 'Niebla';
+    if (code >= 51 && code <= 67) return 'Llovizna/Lluvia ligera';
+    if (code >= 71 && code <= 82) return 'Chubascos de lluvia/Nieve';
+    if (code >= 95 && code <= 99) return 'Tormenta eléctrica';
+    return 'Condiciones variables';
+  };
