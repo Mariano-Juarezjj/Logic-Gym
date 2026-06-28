@@ -129,3 +129,10 @@ const productosIniciales = [
     badgeColor: null
   },
 ];
+
+const Home = () => {
+  const [planes, setPlanes] = useState([]);
+  const [loadingPlanes, setLoadingPlanes] = useState(true);
+  const [productos, setProductos] = useState(productosIniciales);
+  const [productPage, setProductPage] = useState(1);
+  const navigate = useNavigate();
