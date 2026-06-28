@@ -30,3 +30,45 @@ import clasesg from '../assets/clasesgrupales.jpg';
 import salam from '../assets/SaladeMusculación.jpg';
 import evaluacionf from '../assets/evaluacionfisica.jpg';
 import yoga from '../assets/yoga.jpg';
+
+const mapaImagenesServicios = {
+  salam,
+  box,
+  clasesg,
+  asesoramiento,
+  yoga,
+  evaluacionf,
+};
+
+const servicios = [
+  {
+    titulo: 'Sala de Musculación',
+    descripcion: 'Más de 1.200m² con equipos Technogym de última generación, zona de peso libre y sector funcional con instructores certificados.',
+    imagen: 'salam',
+  },
+  {
+    titulo: 'Box y Funcional',
+    descripcion: 'Clases de Box, CrossFit y Entrenamiento Funcional de alta intensidad dictadas por profesionales con certificación internacional.',
+    imagen: 'box',
+  },
+  {
+    titulo: 'Clases Grupales',
+    descripcion: 'Ritmos, HIIT, Stretching, Yoga y más. Más de 20 disciplinas con horarios flexibles para adaptarse a tu rutina diaria.',
+    imagen: 'clasesg',
+  },
+  {
+    titulo: 'Asesoramiento Nutricional',
+    descripcion: 'Consultas personalizadas con nuestro equipo de nutricionistas para complementar tu entrenamiento y optimizar tus resultados.',
+    imagen: 'asesoramiento',
+  },
+  {
+    titulo: 'Yoga y Stretching',
+    descripcion: 'Sesiones de yoga, meditación y elongación para mejorar la flexibilidad, reducir el estrés y equilibrar el cuerpo y la mente.',
+    imagen: 'yoga',
+  },
+  {
+    titulo: 'Evaluación Física',
+    descripcion: 'Medición de composición corporal, test de fuerza y resistencia para establecer tu punto de partida y monitorear tu progreso.',
+    imagen: 'evaluacionf',
+  },
+];
