@@ -1,30 +1,52 @@
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router";
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
+import { useRef } from "react";
 import Swal from "sweetalert2";
+import emailjs from '@emailjs/browser';
 import "../../App.css";
+
 
 const Contacto = () => {
 
-    const {
+  const form = useRef();
+
+  const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
 
+
     const onSubmit = (data) => {
-        console.log("Datos del formulario validados", data);
+
+    emailjs.sendForm('service_jrhz7v4', 'template_rogvm1j', form.current, {
+        publicKey: 'mlY5x0EOdTdAIw-JR',
+    })
+    .then(
+      () => {
+        Swal.fire({
+          title: "Mensaje enviado",
+          icon: "success",
+          confirmButtonColor: "#0466c8",
+          background: "#1a1a1a",
+          color: "#ffffff"
+        });
+        reset();
+      },
+      (error) => {
+        Swal.fire({
+          title: "Error",
+          text: "Hubo un problema al enviar el mensaje",
+          icon: "error"
+        });
+        console.log('FAILED...', error.text);
+      }
+    );
     };
 
-    Swal.fire({
-      title: "Mensaje enviado",
-      icon: "success",
-      confirmButtonColor: "#0466c8",
-      background: "#1a1a1a",
-      color: "#ffffff"
-    });
-
   return (
+
     <Container className="contacto-wrapper py-5">
       <Row className="justify-content-center">
         <Col xs={12} md={8} lg={6}>
@@ -35,14 +57,14 @@ const Contacto = () => {
           </div>
 
           <div className="contacto-caja p-4 p-md-5">
-            <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form ref={form} onSubmit={handleSubmit(onSubmit)}>
               <Form.Group className="mb-4" controlId="formNombre">
                 <Form.Label className="contacto-label">Nombre completo</Form.Label>
                 <Form.Control 
                   type="text" 
                   placeholder="Ej: Juan Pérez" 
                   className="contacto-input"
-                  {...register("nombre", {
+                  {...register("user_name", {
                     required: "El nombre es un dato obligatorio",
                     
                   })} 
@@ -58,7 +80,8 @@ const Contacto = () => {
                   type="email" 
                   placeholder="tu@email.com" 
                   className="contacto-input" 
-                  {...register("email", {
+                  name="user_email"
+                  {...register("user_email", {
                     required: "El email es un dato obligatorio",
                     pattern: {
                         value: /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
@@ -78,7 +101,7 @@ const Contacto = () => {
                   rows={4} 
                   placeholder="¿En qué te podemos ayudar?" 
                   className="contacto-input"
-                  {...register("mensaje", {
+                  {...register("message", {
                     required: "El mensaje es un dato obligatorio",
                     minLength: {
                         value: 20,
@@ -95,7 +118,7 @@ const Contacto = () => {
                 </Form.Text>
               </Form.Group>
 
-              <Button type="submit" className="contacto-btn w-100 mt-2">
+              <Button type="submit" value="send" className="contacto-btn w-100 mt-2">
                 ENVIAR MENSAJE
               </Button>
             </Form>
