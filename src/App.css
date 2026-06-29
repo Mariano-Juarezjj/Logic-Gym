@@ -179,3 +179,59 @@
     display: block;
   }
 }
+
+
+.clima-widget {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(10, 14, 22, 0.95));
+  border: 1px solid rgba(255, 255, 255, 0.15); 
+  border-radius: 22px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+.clima-widget:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 183, 77, 0.6); 
+}
+
+.clima-icon-wrapper {
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
+  border-radius: 50%;
+  background: rgba(255, 183, 77, 0.15); 
+  border: 1px solid rgba(255, 183, 77, 0.4);
+  display: flex;      
+  align-items: center;
+  justify-content: center;
+}
+
+.clima-icon {
+  font-size: 2.4rem;
+  color: #ffb74d;
+}
+
+.clima-temp {
+  font-size: 2.5rem;
+  color: #ffffff;
+}
+
+.clima-chip-row {
+  gap: 0.75rem;
+}
+
+.clima-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 183, 77, 0.1); 
+  border: 1px solid rgba(255, 183, 77, 0.35);
+  color: #ffffff; 
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.clima-tip {
+  color: #94a3b8;
+}
