@@ -16,7 +16,7 @@ const defaultItems = [
   { src: publicidad5, alt: 'Logo marca 6' },
 ];
 
-const Publicidad = ({
+const BannerInfinito = ({
   className = '',
   fullWidth = true,
   speed = 25,
@@ -37,7 +37,8 @@ const Publicidad = ({
         <span className="cinta-item"><img src={publicidad3} alt="Logo marca 4" className="cinta-logo" /></span>
         <span className="cinta-item"><img src={publicidad4} alt="Logo marca 5" className="cinta-logo" /></span>
         <span className="cinta-item"><img src={publicidad5} alt="Logo marca 6" className="cinta-logo" /></span>
-        {/* copia */}
+
+        
         <span className="cinta-item"><img src={publicidad0} alt="" className="cinta-logo" aria-hidden="true" /></span>
         <span className="cinta-item"><img src={publicidad1} alt="" className="cinta-logo" aria-hidden="true" /></span>
         <span className="cinta-item"><img src={publicidad2} alt="" className="cinta-logo" aria-hidden="true" /></span>
@@ -48,4 +49,4 @@ const Publicidad = ({
     </div>
   );
 };
-export default Publicidad;
+export default BannerInfinito;
