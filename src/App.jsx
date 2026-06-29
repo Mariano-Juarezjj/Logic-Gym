@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router"
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Menu from "./components/shared/Menu"
 import Footer from "./components/shared/Footer"
 import Home from "./components/views/home/Home.jsx"
@@ -9,6 +10,8 @@ import FormularioProducto from "./components/views/Producto/FormularioProducto"
 import Error404 from "./components/views/Error404"
 import { useEffect, useState } from "react"
 import ProtectorAdmin from "./components/routes/ProtectorAdmin"
+import Registro from "./components/views/Registro.jsx"
+import Contacto from "./components/views/Contacto.jsx";
 
 const App = () => {
 
@@ -31,6 +34,8 @@ return (
       <Route path="/" element={<Home/>}/>
       <Route path="/detalle" element={<DetalleDeProducto/>}/>
       <Route path="/login" element={<Login setUsuarioLogueado={setUsuarioLogueado}/>}/>
+      <Route path="/registro" element={<Registro/>}/>
+      <Route path="/contacto" element={<Contacto/>}/>
       <Route path="/administrador" element={
         <ProtectorAdmin usuarioLogueado={usuarioLogueado}></ProtectorAdmin>}>
       <Route index element={<Administrador productos={productos} setProductos={setProductos}></Administrador>}/>
